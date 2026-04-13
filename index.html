@@ -111,81 +111,40 @@ body::before {
 .prog-label { font-size: 10px; color: var(--text3); font-weight: 600; }
 
 /* ── ROUND SCORING PANEL ── */
-.round-panel {
-  width: 100%;
-  background: var(--surface2);
-  border-radius: 12px;
-  padding: 8px 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.round-title { font-size: 10px; color: var(--text3); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; text-align: center; }
 
-.capture-row { display: flex; align-items: center; justify-content: space-between; gap: 6px; }
-.cap-label { font-size: 11px; color: var(--text2); font-weight: 500; flex: 1; }
-.cap-pts { font-size: 10px; color: var(--text3); font-weight: 600; min-width: 24px; text-align: right; }
-.cap-check {
-  width: 26px; height: 26px;
-  border-radius: 7px;
-  border: 1.5px solid rgba(255,255,255,0.15);
-  background: transparent;
-  cursor: pointer;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 13px;
-  transition: all 0.12s;
-  flex-shrink: 0;
-}
-.cap-check.checked { border-color: transparent; }
-.cap-check:active { transform: scale(0.88); }
 
-.c0-checked { background: rgba(124,58,237,0.35); border-color: var(--c0m); }
-.c1-checked { background: rgba(234,88,12,0.35); border-color: var(--c1m); }
-.c2-checked { background: rgba(5,150,105,0.35); border-color: var(--c2m); }
-.c3-checked { background: rgba(219,39,119,0.35); border-color: var(--c3m); }
 
-.aces-row { display: flex; align-items: center; gap: 5px; }
-.aces-label { font-size: 11px; color: var(--text2); font-weight: 500; flex: 1; }
-.ace-btns { display: flex; gap: 3px; }
-.ace-btn {
-  width: 24px; height: 24px;
-  border-radius: 6px;
-  border: 1.5px solid rgba(255,255,255,0.12);
-  background: transparent;
-  color: var(--text3);
-  font-size: 11px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.12s;
-  font-family: 'Archivo Black', sans-serif;
-}
-.ace-btn.on { color: var(--gold); border-color: var(--gold); background: rgba(245,158,11,0.15); }
-.ace-btn:active { transform: scale(0.88); }
 
-.apply-btn {
-  width: 100%;
-  padding: 7px;
-  border-radius: 9px;
-  border: none;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.15s;
-  font-family: 'Archivo Black', sans-serif;
-  letter-spacing: 0.3px;
-  margin-top: 2px;
-}
-.apply-btn:active { transform: scale(0.96); }
-.ab-0 { background: var(--c0); color: white; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .ab-0:hover { background: var(--c0m); }
-.ab-1 { background: var(--c1); color: white; }
+
 .ab-1:hover { background: var(--c1m); }
-.ab-2 { background: var(--c2); color: white; }
+
 .ab-2:hover { background: var(--c2m); }
-.ab-3 { background: var(--c3); color: white; }
+
 .ab-3:hover { background: var(--c3m); }
 
-.round-pts-preview { font-size: 11px; color: var(--text2); text-align: center; font-weight: 600; min-height: 16px; }
+
 
 /* ── HISTORY CHIPS ── */
 .hist-row { display: flex; gap: 3px; flex-wrap: wrap; justify-content: center; min-height: 16px; }
@@ -297,6 +256,19 @@ body::before {
 .sla-1 { background: var(--c1); color: white; }
 .sla-2 { background: var(--c2); color: white; }
 .sla-3 { background: var(--c3); color: white; }
+
+
+/* ── ROUND TRACKING & ERROR ── */
+.round-tracker { display: flex; gap: 4px; justify-content: center; flex-wrap: wrap; width: 100%; }
+.rt-dot { width: 8px; height: 8px; border-radius: 50%; background: rgba(255,255,255,0.12); transition: all 0.2s; }
+.rt-dot.done { background: var(--gold); box-shadow: 0 0 5px rgba(245,158,11,0.6); }
+.score-error { font-size: 11px; color: #f87171; text-align: center; font-weight: 600; min-height: 14px; animation: errShake 0.3s ease; }
+@keyframes errShake { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-4px)} 75%{transform:translateX(4px)} }
+/* ── CHIVA ── */
+.chiva-val { color: var(--gold) !important; font-size: 1.3em; animation: chivaPulse 0.4s ease; }
+@keyframes chivaPulse { 0%{transform:scale(1)} 50%{transform:scale(1.3)} 100%{transform:scale(1)} }
+.chiva-btn { background: linear-gradient(135deg, #F59E0B, #EF4444) !important; animation: chivaBtnGlow 1s ease infinite alternate; }
+@keyframes chivaBtnGlow { from{box-shadow:0 0 8px rgba(245,158,11,0.4)} to{box-shadow:0 0 20px rgba(239,68,68,0.7)} }
 
 /* ── MANUAL ENTRY ── */
 .manual-row { display: flex; gap: 5px; width: 100%; align-items: center; }
@@ -452,10 +424,10 @@ body::before {
   .app { padding: 5px 10px 4px; gap: 4px; }
   .logo h1 { font-size: 16px; }
   .score-num { font-size: clamp(48px,7vw,80px); }
-  .round-panel { padding: 5px 8px; gap: 3px; }
-  .capture-row { gap: 4px; }
-  .cap-check { width: 22px; height: 22px; font-size: 11px; }
-  .apply-btn { padding: 5px; font-size: 11px; }
+  
+  
+  
+  
 }
 </style>
 </head>
@@ -586,17 +558,9 @@ const COLORS = ['c0','c1','c2','c3'];
 const BARCOLS = ['bar-0','bar-1','bar-2','bar-3'];
 const PFCOLS  = ['pf-0','pf-1','pf-2','pf-3'];
 const WINCOLS = ['wc0','wc1','wc2','wc3'];
-const ABCOLS  = ['ab-0','ab-1','ab-2','ab-3'];
-const CKCOLS  = ['c0-checked','c1-checked','c2-checked','c3-checked'];
 const DEFAULT_NAMES = ['Player 1','Player 2','Player 3','Player 4'];
 
 // Capture items: id, label, pts, suit symbol
-const CAPTURES = [
-  { id:'mostCards', label:'Most Cards',     pts:3, sym:'&#9827;' },
-  { id:'mostSpades',label:'Most Spades',    pts:1, sym:'&#9824;' },
-  { id:'bigCasino', label:'Big Casino (10&#9830;)', pts:2, sym:'&#9830;' },
-  { id:'litCasino', label:'Little Casino (2&#9824;)', pts:1, sym:'&#9824;' },
-];
 
 let numPlayers = 2;
 let scores   = [0,0,0,0];
@@ -604,50 +568,12 @@ let history  = [[],[],[],[]];
 let names    = [...DEFAULT_NAMES];
 let gameOver = false;
 let confettiAnim = null;
-let inputMode = 'slider'; // 'checkboxes' | 'slider'
 let sliderVals = [0,0,0,0];
 let gameWins = [0,0,0,0];
 const BEST_OF = 3;
 const WINS_NEEDED = Math.ceil(BEST_OF / 2);
 
 // Per-player round state
-let roundState = [
-  { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
-  { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
-  { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
-  { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
-];
-
-function calcRoundPts(i) {
-  const s = roundState[i];
-  return (s.mostCards?3:0) + (s.mostSpades?1:0) + (s.bigCasino?2:0) + (s.litCasino?1:0) + s.aces;
-}
-
-function toggleCapture(playerIdx, capId) {
-  roundState[playerIdx][capId] = !roundState[playerIdx][capId];
-  renderCard(playerIdx);
-}
-
-function setAces(playerIdx, count) {
-  roundState[playerIdx].aces = roundState[playerIdx].aces === count ? 0 : count;
-  renderCard(playerIdx);
-}
-
-function applyRound(playerIdx) {
-  const pts = calcRoundPts(playerIdx);
-  if (pts === 0) return;
-  scores[playerIdx] += pts;
-  history[playerIdx].push(pts);
-  showPopup(playerIdx, pts);
-  // reset round state for this player
-  roundState[playerIdx] = { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 };
-  if (scores[playerIdx] >= WIN_TARGET) {
-    renderCard(playerIdx);
-    setTimeout(() => triggerWin(playerIdx), 300);
-  } else {
-    renderCard(playerIdx);
-  }
-}
 
 function setPlayers(n) {
   numPlayers = n;
@@ -679,32 +605,12 @@ function renderCard(i) {
   const leader = getLeader();
   const isLeader = leader === i && scores[i] > 0;
   const pct = Math.min(100, Math.round((scores[i] / WIN_TARGET) * 100));
-  const s = roundState[i];
-  const previewPts = calcRoundPts(i);
   if (!sliderVals) sliderVals = [0,0,0,0];
   const hist = history[i].slice(-4).reverse();
   const scoreSize = scores[i] >= 100 ? 'font-size:clamp(56px,8vw,90px)' : '';
 
-  // Build capture checkboxes
-  const capRows = CAPTURES.map(c => {
-    const checked = s[c.id];
-    const chkClass = checked ? 'cap-check checked ' + CKCOLS[i] : 'cap-check';
-    const tick = checked ? '&#10003;' : '';
-    return `<div class="capture-row">
-      <span class="cap-label">${c.label}</span>
-      <span class="cap-pts">+${c.pts}</span>
-      <button class="${chkClass}" onclick="toggleCapture(${i},'${c.id}')">${tick}</button>
-    </div>`;
-  }).join('');
-
-  // Ace buttons 1-4
-  const aceBtns = [1,2,3,4].map(n => {
-    const on = s.aces >= n;
-    return `<button class="ace-btn ${on?'on':''}" onclick="setAces(${i},${n})">A</button>`;
-  }).join('');
-
   const histHtml = history[i].map((h, hi) =>
-    '<span class="hist-chip" onclick="openEditModal(' + i + ',' + hi + ')">+' + h + '</span>'
+    '<span class="hist-chip" onclick="openEditModal(' + i + ',' + hi + ')">' + (typeof h === 'string' ? h : '+' + h) + '</span>'
   ).reverse().join('');
 
   const cardHtml = `
@@ -719,33 +625,16 @@ function renderCard(i) {
       ${history[i].length > 0 ? '<div class="hist-label" style="text-align:center;margin-bottom:3px;">tap to edit</div>' : ''}
       <div class="hist-row">${histHtml}</div>
     </div>
-        <div class="mode-toggle-bar" style="display:flex;width:100%;background:var(--surface3);border-radius:10px;padding:3px;gap:3px;flex-shrink:0;">
-      <button style="flex:1;padding:6px 4px;border-radius:7px;border:none;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all 0.15s;background:${inputMode==='checkboxes'?'var(--surface)':'transparent'};color:${inputMode==='checkboxes'?'var(--text)':'var(--text3)'}" onclick="setInputMode('checkboxes')">&#9745; Checkboxes</button>
-      <button style="flex:1;padding:6px 4px;border-radius:7px;border:none;font-family:'DM Sans',sans-serif;font-size:11px;font-weight:600;cursor:pointer;transition:all 0.15s;background:${inputMode==='slider'?'var(--surface)':'transparent'};color:${inputMode==='slider'?'var(--text)':'var(--text3)'}" onclick="setInputMode('slider')">&#8646; Slider</button>
-    </div>
-    <div style="${inputMode==='checkboxes'?'':'display:none'};width:100%">
-      <div class="round-panel" style="margin:0">
-        <div class="round-title">This Round</div>
-        ${capRows}
-        <div class="capture-row">
-          <div class="aces-row" style="width:100%">
-            <span class="aces-label">Aces &nbsp;<span style="font-size:9px;color:var(--text3)">(+1 each)</span></span>
-            <div class="ace-btns">${aceBtns}</div>
-          </div>
-        </div>
-        <div class="round-pts-preview">${previewPts > 0 ? '+' + previewPts + ' pts ready' : ''}</div>
-        <button class="apply-btn ${ABCOLS[i]}" onclick="applyRound(${i})" ${previewPts===0?'disabled style="opacity:0.4;cursor:default"':''}>Add ${previewPts > 0 ? '+'+previewPts : ''} to Score</button>
-      </div>
-    </div>
-    <div style="${inputMode==='slider'?'':'display:none'};width:100%">
+        <div style="width:100%">
       <div class="slider-panel sl-${i}">
-        <div class="slider-val-display" id="slval-${i}" style="color:${['var(--c0m)','var(--c1m)','var(--c2m)','var(--c3m)'][i]}">${sliderVals[i]}</div>
+        <div class="slider-val-display ${sliderVals[i]===12?'chiva-val':''}" id="slval-${i}" style="color:${['var(--c0m)','var(--c1m)','var(--c2m)','var(--c3m)'][i]}">${sliderVals[i]===12?'Chiva!!!':sliderVals[i]}</div>
         <div class="slider-wrap">
-          <input class="pts-slider" type="range" min="0" max="11" step="1" value="${sliderVals[i]}"
+          <input class="pts-slider" type="range" min="0" max="12" step="1" value="${sliderVals[i]}"
             id="slider-${i}" oninput="updateSlider(${i},this.value)" />
         </div>
-        <button class="slider-add-btn sla-${i}" onclick="applySlider(${i})" ${sliderVals[i]===0?'disabled style="opacity:0.4;cursor:default"':''}>
-          Add +${sliderVals[i]} to Score
+        <div class="score-error" id="slerr-${i}"></div>
+        <button class="slider-add-btn sla-${i} ${sliderVals[i]===12?'chiva-btn':''}" onclick="applySlider(${i})" ${sliderVals[i]===0?'disabled style="opacity:0.4;cursor:default"':''}>
+          ${sliderVals[i]===12?'&#127881; CHIVA — Instant Win!':sliderVals[i]>0?'Add +'+sliderVals[i]+' to Score':'Add to Score'}
         </button>
       </div>
     </div>
@@ -817,12 +706,6 @@ function startGame() {
 function resetScores() {
   scores = [0,0,0,0];
   history = [[],[],[],[]];
-  roundState = [
-    { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
-    { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
-    { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
-    { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
-  ];
   gameOver = false;
   sliderVals = [0,0,0,0];
   gameWins = [0,0,0,0];
@@ -837,12 +720,6 @@ function nextGame() {
   // Reset scores only - keep game win stars
   scores = [0,0,0,0];
   history = [[],[],[],[]];
-  roundState = [
-    { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
-    { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
-    { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
-    { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
-  ];
   sliderVals = [0,0,0,0];
   gameOver = false;
   warnedPlayers.clear();
@@ -852,35 +729,73 @@ function nextGame() {
 
 
 // ── INPUT MODE TOGGLE ─────────────────────────────────────────
-function setInputMode(mode) {
-  inputMode = mode;
-  render();
-}
-
 // ── SLIDER ENTRY ──────────────────────────────────────────────
 function updateSlider(playerIdx, val) {
   sliderVals[playerIdx] = parseInt(val);
+  const v = sliderVals[playerIdx];
   const display = document.getElementById('slval-' + playerIdx);
   const btn = document.querySelector('#card-' + playerIdx + ' .slider-add-btn');
-  if (display) display.textContent = sliderVals[playerIdx];
+  const err = document.getElementById('slerr-' + playerIdx);
+  const isChiva = v === 12;
+
+  if (display) {
+    display.textContent = isChiva ? 'Chiva!!!' : v;
+    display.className = 'slider-val-display' + (isChiva ? ' chiva-val' : '');
+  }
+
+  // Validate: warn if this would push score over 11 in a round
+  // (We track per-round using roundScoresThisGame)
+  if (err) {
+    if (v > 11 && !isChiva) {
+      err.textContent = 'Max score per round is 11';
+    } else {
+      err.textContent = '';
+    }
+  }
+
   if (btn) {
-    if (sliderVals[playerIdx] === 0) {
-      btn.disabled = true; btn.style.opacity = '0.4'; btn.textContent = 'Add to Score';
+    if (v === 0) {
+      btn.disabled = true; btn.style.opacity = '0.4';
+      btn.textContent = 'Add to Score';
+      btn.className = 'slider-add-btn sla-' + playerIdx;
     } else {
       btn.disabled = false; btn.style.opacity = '1';
-      btn.textContent = 'Add +' + sliderVals[playerIdx] + ' to Score';
+      btn.className = 'slider-add-btn sla-' + playerIdx + (isChiva ? ' chiva-btn' : '');
+      btn.textContent = isChiva ? '🎉 CHIVA — Instant Win!' : 'Add +' + v + ' to Score';
     }
   }
 }
 
 function applySlider(playerIdx) {
   const val = sliderVals[playerIdx];
-  if (!val || val <= 0) return;
+  if (val === null || val === undefined) return;
+  const isChiva = val === 12;
+
+  // Block scores > 11 (not Chiva)
+  if (val > 11 && !isChiva) {
+    const err = document.getElementById('slerr-' + playerIdx);
+    if (err) { err.textContent = 'Max score per round is 11!'; }
+    return;
+  }
+
+  // Chiva = instant win
+  if (isChiva) {
+    scores[playerIdx] = WIN_TARGET;
+    history[playerIdx].push('Chiva!');
+    showPopup(playerIdx, 'Chiva!');
+    soundWin();
+    sliderVals[playerIdx] = 0;
+    renderCard(playerIdx);
+    setTimeout(() => triggerWin(playerIdx), 300);
+    return;
+  }
+
+  // Normal score (including 0)
   scores[playerIdx] += val;
   history[playerIdx].push(val);
-  showPopup(playerIdx, val);
-  soundCheck(val);
+  if (val > 0) { showPopup(playerIdx, val); soundCheck(val); }
   sliderVals[playerIdx] = 0;
+
   if (scores[playerIdx] >= WIN_TARGET) {
     renderCard(playerIdx);
     setTimeout(() => triggerWin(playerIdx), 300);
@@ -952,7 +867,7 @@ function showPopup(idx, pts) {
   const rect = cardEl.getBoundingClientRect();
   const el = document.createElement('div');
   el.className = 'score-popup';
-  el.textContent = '+' + pts;
+  el.textContent = typeof pts === 'string' ? pts : '+' + pts;
   el.style.left = (rect.left + rect.width/2 - 20) + 'px';
   el.style.top  = (rect.top  + rect.height/2) + 'px';
   document.body.appendChild(el);
