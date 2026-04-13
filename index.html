@@ -72,6 +72,7 @@ body::before {
 /* ── PLAYER GRID ── */
 .grid { display: grid; gap: 10px; flex: 1; min-height: 0; overflow-y: auto; overflow-x: hidden; -webkit-overflow-scrolling: touch; padding-bottom: 8px; }
 .grid.p2 { grid-template-columns: 1fr 1fr; align-items: start; }
+.grid.p3 { grid-template-columns: 1fr 1fr; align-items: start; }
 .grid.p4 { grid-template-columns: 1fr 1fr; align-items: start; }
 
 /* ── PLAYER CARD ── */
@@ -323,6 +324,90 @@ body::before {
 .hist-chip:hover { border-color: rgba(255,255,255,0.2); color: var(--text); }
 .hist-label { font-size: 10px; color: var(--text3); font-weight: 500; }
 
+
+
+/* ── SETUP SCREEN ── */
+.setup-overlay {
+  position: fixed; inset: 0; z-index: 300;
+  background: var(--bg);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0; padding: 32px 24px;
+  transition: opacity 0.35s, transform 0.35s;
+}
+.setup-overlay.hide {
+  opacity: 0; transform: scale(0.97); pointer-events: none;
+}
+.setup-suits { display: flex; gap: 6px; font-size: 32px; margin-bottom: 12px; }
+.setup-title { font-family: 'Archivo Black', sans-serif; font-size: 36px; letter-spacing: -1.5px; color: var(--text); margin-bottom: 4px; }
+.setup-title span { color: var(--c0m); }
+.setup-sub { font-size: 14px; color: var(--text3); margin-bottom: 36px; }
+.setup-section { width: 100%; max-width: 360px; margin-bottom: 24px; }
+.setup-label { font-size: 11px; color: var(--text3); font-weight: 600; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 10px; text-align: center; }
+.setup-player-btns { display: flex; gap: 10px; justify-content: center; }
+.setup-player-btn {
+  width: 72px; height: 72px; border-radius: 18px;
+  border: 2px solid rgba(255,255,255,0.1); background: var(--surface);
+  color: var(--text2); font-family: 'Archivo Black', sans-serif;
+  font-size: 28px; cursor: pointer; transition: all 0.15s;
+  display: flex; align-items: center; justify-content: center;
+}
+.setup-player-btn:hover { background: var(--surface2); color: var(--text); border-color: rgba(255,255,255,0.2); }
+.setup-player-btn.active { background: var(--c0); border-color: var(--c0m); color: white; box-shadow: 0 0 20px rgba(124,58,237,0.35); }
+.setup-name-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.setup-name-input {
+  height: 44px; border-radius: 12px;
+  border: 1.5px solid rgba(255,255,255,0.1); background: var(--surface2);
+  color: var(--text); font-size: 14px; font-weight: 600; text-align: center;
+  outline: none; font-family: 'DM Sans', sans-serif; padding: 0 10px;
+  transition: border-color 0.15s;
+}
+.setup-name-input:focus { border-color: var(--c0m); }
+.setup-name-input.hidden { opacity: 0.25; pointer-events: none; }
+.setup-start-btn {
+  width: 100%; max-width: 360px; padding: 18px;
+  border-radius: 18px; border: none;
+  background: var(--c0); color: white;
+  font-family: 'Archivo Black', sans-serif; font-size: 20px;
+  letter-spacing: -0.5px; cursor: pointer;
+  transition: transform 0.15s, box-shadow 0.15s;
+  box-shadow: 0 4px 24px rgba(124,58,237,0.35);
+}
+.setup-start-btn:hover { transform: scale(1.02); box-shadow: 0 6px 32px rgba(124,58,237,0.5); }
+.setup-start-btn:active { transform: scale(0.98); }
+
+/* ── RESET CONFIRM MODAL ── */
+.reset-modal-bg {
+  position: fixed; inset: 0; z-index: 200;
+  background: rgba(15,10,30,0.88);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.reset-modal-bg.show { opacity: 1; pointer-events: all; }
+.reset-modal {
+  background: var(--surface2); border-radius: 22px;
+  border: 1.5px solid rgba(255,255,255,0.1);
+  padding: 28px 24px 20px; width: 320px; max-width: 92vw;
+  transform: scale(0.9); transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+}
+.reset-modal-bg.show .reset-modal { transform: scale(1); }
+.reset-modal-icon { font-size: 36px; margin-bottom: 4px; }
+.reset-modal-title { font-family: 'Archivo Black', sans-serif; font-size: 18px; color: var(--text); letter-spacing: -0.5px; margin-bottom: 4px; }
+.reset-modal-sub { font-size: 13px; color: var(--text3); text-align: center; margin-bottom: 14px; line-height: 1.5; }
+.reset-option-btn {
+  width: 100%; padding: 14px 16px; border-radius: 14px;
+  border: 1.5px solid rgba(255,255,255,0.1); background: var(--surface3);
+  color: var(--text); cursor: pointer; transition: all 0.15s;
+  text-align: left; display: flex; flex-direction: column; gap: 3px;
+  margin-bottom: 8px;
+}
+.reset-option-btn:hover { border-color: var(--c1m); background: rgba(234,88,12,0.1); }
+.reset-option-btn:active { transform: scale(0.98); }
+.reset-option-title { font-family: 'Archivo Black', sans-serif; font-size: 14px; color: var(--text); letter-spacing: -0.3px; }
+.reset-option-desc { font-size: 11px; color: var(--text3); font-weight: 500; }
+.reset-cancel-btn { width: 100%; padding: 11px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.08); background: transparent; color: var(--text3); font-size: 13px; font-weight: 600; cursor: pointer; font-family: 'DM Sans', sans-serif; transition: all 0.12s; margin-top: 2px; }
+.reset-cancel-btn:hover { background: var(--surface3); color: var(--text2); }
+
 /* ── EDIT MODAL ── */
 .edit-modal-bg {
   position: fixed; inset: 0; z-index: 200;
@@ -358,6 +443,11 @@ body::before {
 .score-popup { position: fixed; pointer-events: none; z-index: 50; font-family: 'Archivo Black', sans-serif; font-size: 26px; color: var(--gold); text-shadow: 0 0 16px rgba(245,158,11,0.7); animation: floatUp 0.9s ease forwards; }
 @keyframes floatUp { 0%{opacity:1;transform:translateY(0) scale(1)} 100%{opacity:0;transform:translateY(-65px) scale(1.3)} }
 
+@media (orientation: landscape) {
+  .grid.p3 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+  .grid.p4 { grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; }
+}
+
 @media (orientation: landscape) and (max-height: 500px) {
   .app { padding: 5px 10px 4px; gap: 4px; }
   .logo h1 { font-size: 16px; }
@@ -371,6 +461,39 @@ body::before {
 </head>
 <body>
 
+<!-- SETUP SCREEN -->
+<div class="setup-overlay" id="setupOverlay">
+  <div class="setup-suits">
+    <span style="color:#ef4444">&#9829;</span>
+    <span style="color:#ef4444">&#9830;</span>
+    <span style="color:var(--text)">&#9824;</span>
+    <span style="color:var(--text)">&#9827;</span>
+  </div>
+  <div class="setup-title">Casino <span>Score</span></div>
+  <div class="setup-sub">First to 21 wins &middot; Best of 3</div>
+
+  <div class="setup-section">
+    <div class="setup-label">Number of Players</div>
+    <div class="setup-player-btns">
+      <button class="setup-player-btn" onclick="setupSelectPlayers(2)" id="spb2">2</button>
+      <button class="setup-player-btn" onclick="setupSelectPlayers(3)" id="spb3">3</button>
+      <button class="setup-player-btn" onclick="setupSelectPlayers(4)" id="spb4">4</button>
+    </div>
+  </div>
+
+  <div class="setup-section">
+    <div class="setup-label">Player Names</div>
+    <div class="setup-name-grid">
+      <input class="setup-name-input" id="sname0" placeholder="Player 1" maxlength="12" />
+      <input class="setup-name-input" id="sname1" placeholder="Player 2" maxlength="12" />
+      <input class="setup-name-input hidden" id="sname2" placeholder="Player 3" maxlength="12" />
+      <input class="setup-name-input hidden" id="sname3" placeholder="Player 4" maxlength="12" />
+    </div>
+  </div>
+
+  <button class="setup-start-btn" onclick="startGame()">Let&#39;s Play &#9654;</button>
+</div>
+
 <div class="app">
   <div class="header">
     <div class="logo">
@@ -383,21 +506,7 @@ body::before {
       <h1>Casino <span>Score</span></h1>
     </div>
     <div class="header-right">
-      <button class="reset-btn" onclick="resetScores()">&#8634; Reset</button>
-    </div>
-  </div>
-
-  <div class="controls">
-    <div class="ctrl-group">
-      <span class="ctrl-label">Players</span>
-      <div class="seg-btns">
-        <button class="seg-btn" onclick="setPlayers(2)">2</button>
-        <button class="seg-btn" onclick="setPlayers(3)">3</button>
-        <button class="seg-btn" onclick="setPlayers(4)">4</button>
-      </div>
-    </div>
-    <div class="ctrl-group" style="font-size:12px; color:var(--text3);">
-      First to <strong style="color:var(--gold);margin:0 4px;">21</strong> pts wins
+      <button class="reset-btn" onclick="openResetModal()">&#8634; Reset</button>
     </div>
   </div>
 
@@ -418,9 +527,26 @@ body::before {
       <span class="win-star">&#11088;</span>
     </div>
     <div class="win-btns">
-      <button class="win-btn-new" onclick="newGame()">New Game</button>
-      <button class="win-btn-close" onclick="closeWin()">Keep Playing</button>
+      <button class="win-btn-new" id="winActionBtn" onclick="nextGame()">Next Game</button>
     </div>
+  </div>
+</div>
+
+<!-- RESET CONFIRM MODAL -->
+<div class="reset-modal-bg" id="resetModalBg">
+  <div class="reset-modal">
+    <div class="reset-modal-icon">&#9888;&#65039;</div>
+    <div class="reset-modal-title">Reset Game?</div>
+    <div class="reset-modal-sub">Choose what to reset. This cannot be undone.</div>
+    <button class="reset-option-btn" onclick="confirmReset('scores')">
+      <span class="reset-option-title">&#8634; Reset Scores</span>
+      <span class="reset-option-desc">Clears all scores &amp; stars — keeps player names</span>
+    </button>
+    <button class="reset-option-btn" onclick="confirmReset('all')">
+      <span class="reset-option-title">&#128465; Reset Scores &amp; Names</span>
+      <span class="reset-option-desc">Clears everything — back to Player 1, 2, 3, 4</span>
+    </button>
+    <button class="reset-cancel-btn" onclick="closeResetModal()">Cancel</button>
   </div>
 </div>
 
@@ -478,7 +604,7 @@ let history  = [[],[],[],[]];
 let names    = [...DEFAULT_NAMES];
 let gameOver = false;
 let confettiAnim = null;
-let inputMode = 'checkboxes'; // 'checkboxes' | 'slider'
+let inputMode = 'slider'; // 'checkboxes' | 'slider'
 let sliderVals = [0,0,0,0];
 let gameWins = [0,0,0,0];
 const BEST_OF = 3;
@@ -525,7 +651,6 @@ function applyRound(playerIdx) {
 
 function setPlayers(n) {
   numPlayers = n;
-  document.querySelectorAll('.seg-btn').forEach((b,i) => b.classList.toggle('active', (i===0&&n===2)||(i===1&&n===3)||(i===2&&n===4)));
   document.getElementById('grid').className = 'grid p' + n;
   render();
 }
@@ -586,11 +711,10 @@ function renderCard(i) {
     <div class="card-bar ${BARCOLS[i]}"></div>
     <div class="card-header-row">
       <input class="player-name" value="${names[i]}" maxlength="12" onchange="names[${i}]=this.value" style="flex:1;text-align:center;" />
-      ${gameWins[i] > 0 ? `<div class="game-stars">${'&#11088;'.repeat(gameWins[i])}</div>` : ''}
+      ${gameWins[i] > 0 ? '<div class="game-stars">' + '&#11088;'.repeat(gameWins[i]) + '</div>' : ''}
     </div>
     <div class="score-num" style="${scoreSize}">${scores[i]}</div>
     <div class="prog-track"><div class="prog-fill ${PFCOLS[i]}" style="width:${pct}%"></div></div>
-    <div class="prog-label">${pct}% of 21</div>
     <div style="width:100%;padding:0 2px;">
       ${history[i].length > 0 ? '<div class="hist-label" style="text-align:center;margin-bottom:3px;">tap to edit</div>' : ''}
       <div class="hist-row">${histHtml}</div>
@@ -620,7 +744,6 @@ function renderCard(i) {
           <input class="pts-slider" type="range" min="0" max="11" step="1" value="${sliderVals[i]}"
             id="slider-${i}" oninput="updateSlider(${i},this.value)" />
         </div>
-        <div class="slider-labels"><span>0</span><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span><span>11</span></div>
         <button class="slider-add-btn sla-${i}" onclick="applySlider(${i})" ${sliderVals[i]===0?'disabled style="opacity:0.4;cursor:default"':''}>
           Add +${sliderVals[i]} to Score
         </button>
@@ -632,6 +755,63 @@ function renderCard(i) {
   if (!cardEl) return;
   cardEl.className = `card ${COLORS[i]}${isLeader?' leader':''}`;
   cardEl.innerHTML = cardHtml;
+}
+
+function openResetModal() {
+  document.getElementById('resetModalBg').classList.add('show');
+}
+
+function closeResetModal() {
+  document.getElementById('resetModalBg').classList.remove('show');
+}
+
+function confirmReset(type) {
+  closeResetModal();
+  if (type === 'all') {
+    names = [...DEFAULT_NAMES];
+    // Show setup screen again
+    resetScores();
+    showSetup();
+  } else {
+    resetScores();
+  }
+}
+
+function showSetup() {
+  const overlay = document.getElementById('setupOverlay');
+  overlay.classList.remove('hide');
+  // Pre-fill names
+  for (let i = 0; i < 4; i++) {
+    const inp = document.getElementById('sname' + i);
+    if (inp) inp.value = names[i] === DEFAULT_NAMES[i] ? '' : names[i];
+  }
+  setupSelectPlayers(numPlayers);
+}
+
+function setupSelectPlayers(n) {
+  document.querySelectorAll('.setup-player-btn').forEach((b,i) => {
+    b.classList.toggle('active', i+2 === n);
+  });
+  // Show/hide name inputs
+  for (let i = 0; i < 4; i++) {
+    const inp = document.getElementById('sname' + i);
+    if (inp) inp.classList.toggle('hidden', i >= n);
+  }
+  numPlayers = n;
+}
+
+function startGame() {
+  // Grab names from setup inputs
+  for (let i = 0; i < 4; i++) {
+    const inp = document.getElementById('sname' + i);
+    if (inp) {
+      const val = inp.value.trim();
+      names[i] = val || DEFAULT_NAMES[i];
+    }
+  }
+  document.getElementById('setupOverlay').classList.add('hide');
+  document.getElementById('grid').className = 'grid p' + numPlayers;
+  render();
 }
 
 function resetScores() {
@@ -652,6 +832,23 @@ function resetScores() {
 }
 
 function newGame() { resetScores(); }
+
+function nextGame() {
+  // Reset scores only - keep game win stars
+  scores = [0,0,0,0];
+  history = [[],[],[],[]];
+  roundState = [
+    { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
+    { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
+    { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
+    { mostCards:false, mostSpades:false, bigCasino:false, litCasino:false, aces:0 },
+  ];
+  sliderVals = [0,0,0,0];
+  gameOver = false;
+  warnedPlayers.clear();
+  closeWin();
+  render();
+}
 
 
 // ── INPUT MODE TOGGLE ─────────────────────────────────────────
@@ -769,18 +966,18 @@ function triggerWin(idx) {
   const overlay = document.getElementById('winOverlay');
   document.getElementById('winName').textContent = names[idx];
   document.getElementById('winName').className = 'win-name ' + WINCOLS[idx];
-  const winsLeft = WINS_NEEDED - gameWins[idx];
-  const winsStr = gameWins[idx] === WINS_NEEDED
-    ? `Won the match! &#127881;`
-    : `Game ${gameWins[idx]} of ${WINS_NEEDED} needed &mdash; ${winsLeft} more to win!`;
-  document.getElementById('winScore').innerHTML = `Reached <strong>${scores[idx]}</strong> pts &mdash; ${winsStr}`;
+  document.getElementById('winScore').innerHTML = 'Reached <strong>' + scores[idx] + '</strong> points!';
+  const btn = document.getElementById('winActionBtn');
+  if (gameWins[idx] >= WINS_NEEDED) {
+    btn.textContent = 'New Game';
+    btn.onclick = function() { fullReset(); };
+  } else {
+    btn.textContent = 'Next Game';
+    btn.onclick = function() { nextGame(); };
+  }
   overlay.classList.add('show');
   startConfetti();
   soundWin();
-  // Check match winner
-  if (gameWins[idx] >= WINS_NEEDED) {
-    setTimeout(() => triggerMatchWin(idx), 3500);
-  }
 }
 
 function triggerMatchWin(idx) {
@@ -955,7 +1152,8 @@ window.applyRound = function(playerIdx) {
 };
 
 // ── INIT ──────────────────────────────────────────────────────
-setPlayers(2);
+// Show setup screen on load
+showSetup();
 </script>
 </body>
 </html>
